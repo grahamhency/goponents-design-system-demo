@@ -1,0 +1,12 @@
+@import '~@tangoe/goponents/styles/variables';
+
+.poke-sprite {
+  background: $theme-light-app-bg;
+  border-radius: 50%;
+  height: 4rem;
+  padding: 0.5rem;
+}
+
+.poke-title {
+  font-size: 1.5rem;
+}
