@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'design-system-test';
 
   menuItems: Array<NavGroup | NavItem> = [
-    { route: 'demo1', routeIcon: 'power_settings_new', routeTitle: 'Demo' }
+    { route: 'table-demo', routeIcon: 'power_settings_new', routeTitle: 'Table Demo' },
+    { route: 'toast-demo', routeIcon: 'local_bar', routeTitle: 'Toast Demo' }
   ];
 }

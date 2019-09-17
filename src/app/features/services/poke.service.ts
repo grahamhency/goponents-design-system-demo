@@ -13,13 +13,7 @@ export class PokeService {
   constructor(private http: HttpClient) { }
 
   get(params?: GoTableConfig): Observable<any> {
-    let extraParams = '';
-    if (params) {
-      extraParams = '?offset=' + params.pageConfig.offset;
-      extraParams = extraParams + '&limit=' + params.pageConfig.perPage;
-    }
-
-    return this.http.get<PokemonSet>('https://pokeapi.co/api/v2/pokemon/' + extraParams).pipe(map((data: PokemonSet) => {
+    return this.http.get<PokemonSet>('https://pokeapi.co/api/v2/pokemon/' + this.formatParams(params)).pipe(map((data: PokemonSet) => {
       const formattedData: { totalCount: number, results: Pokemon[] } = { totalCount: 0, results: [] };
 
       formattedData.totalCount = data.count;
@@ -30,7 +24,7 @@ export class PokeService {
   }
 
   getDetails(pokemon: Pokemon[]): Observable<Pokemon[]> {
-    let requests = [];
+    const requests = [];
 
     pokemon.forEach(i => {
       requests.push(this.getByName(i.name).subscribe(j => {
@@ -45,7 +39,14 @@ export class PokeService {
     return this.http.get<Pokemon>('https://pokeapi.co/api/v2/pokemon/' + name);
   }
 
-  private paginateData(paging: GoTablePageConfig, results: Pokemon[]): any[] {
-    return results.slice(paging.offset, paging.offset + paging.perPage);
+  private formatParams(params: GoTableConfig): string {
+    let extraParams = '';
+
+    if (params) {
+      extraParams = '?offset=' + params.pageConfig.offset;
+      extraParams = extraParams + '&limit=' + params.pageConfig.perPage;
+    }
+
+    return extraParams;
   }
 }

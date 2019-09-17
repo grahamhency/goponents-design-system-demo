@@ -3,7 +3,8 @@
 
     <go-table [loadingData]="isLoading"
               [tableConfig]="tableConfig"
-              (tableChange)="handleTableChange($event)">
+              (tableChange)="handleTableChange($event)"
+              tableTitle="Pokemon">
 
       <go-table-column field="id" title="#" width="4rem"></go-table-column>
       <go-table-column field="name" title="Name"></go-table-column>
@@ -11,41 +12,48 @@
       <go-table-column field="weight" title="Weight"></go-table-column>
       <go-table-column field="base_experience" title="Base XP"></go-table-column>
  
+      <!-- ** Image ** -->
       <!-- <go-table-column width="6rem">
         <ng-template #goTableCell let-item>
           <img class="poke-sprite" [src]="item.sprites.front_default"/>
         </ng-template>
-      </go-table-column>
+      </go-table-column> -->
 
-      <go-table-column field="id" title="#" width="4rem"></go-table-column>
+      <!-- ** Id ** -->
+      <!-- <go-table-column field="id" title="#" width="4rem"></go-table-column> -->
 
-      <go-table-column field="name" title="Name">
+      <!-- ** Name ** -->
+      <!-- <go-table-column field="name" title="Name">
         <ng-template #goTableCell let-item>
           <span class="poke-title">{{ item.name | titlecase }}</span>
         </ng-template>
-      </go-table-column>
+      </go-table-column> -->
 
-      <go-table-column title="Type">
+      <!-- ** Types ** -->
+      <!-- <go-table-column title="Type">
         <ng-template #goTableCell let-item>
           <span *ngFor="let type of item.types; let i = index">
             {{ type.type.name | titlecase }}<span *ngIf="i !== item.types.length - 1">, </span>
           </span>
         </ng-template>
-      </go-table-column>
+      </go-table-column> -->
 
-      <go-table-column field="height" title="Height">
+      <!-- ** Height ** -->
+      <!-- <go-table-column field="height" title="Height">
         <ng-template #goTableCell let-item>
           {{ item.height | number: '1.0-0' }} dm
         </ng-template>
-      </go-table-column>
+      </go-table-column> -->
       
-      <go-table-column field="weight" title="Weight">
+      <!-- ** Weight ** -->
+      <!-- <go-table-column field="weight" title="Weight">
         <ng-template #goTableCell let-item>
           {{ item.weight | number: '1.0-0'}} hg
         </ng-template>
-      </go-table-column>
+      </go-table-column> -->
 
-      <go-table-column field="base_experience" title="Base XP">
+      <!-- ** XP ** -->
+      <!-- <go-table-column field="base_experience" title="Base XP">
         <ng-template #goTableCell let-item>
           {{ item.base_experience | number: '1.0-0'}} xp
         </ng-template>
